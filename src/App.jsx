@@ -1,5 +1,5 @@
-import CreditCardBack from './assets/img/credit-card-back.png'
-import CreditCardFront from './assets/img/credit-card-front.png'
+import CreditCardBack from './assets/img/mobile-credit-card-back.png'
+import CreditCardFront from './assets/img/mobile-credit-card-front.png'
 import MobileBackground from './assets/img/mobile-background.png'
 import './App.css'
 
