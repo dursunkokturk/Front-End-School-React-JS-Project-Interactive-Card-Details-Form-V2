@@ -1,5 +1,26 @@
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+.credit-card-visual {
+  display: flex;
+  position: relative;
+}
+
+.credit-card-back {
+  position: absolute;
+  z-index: 1;
+
+  margin-top: 32px;
+  margin-left: 73px;
+}
+
+.credit-card-front {
+  position: absolute;
+  z-index: 2;
+
+  margin-top: 126px;
+  margin-left: 16px;
 }
