@@ -36,6 +36,7 @@ export default function App() {
             </div>
           </div>
         </div>
+        <button>Onayla</button>
       </div>
     </>
   )

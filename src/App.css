@@ -70,12 +70,17 @@ body {
 .credit-card-informations .credit-card-expiration-date {
   display: flex;
   flex-direction: column;
+
+  margin-bottom: 28px;
 }
 
 .credit-card-informations .credit-card-expiration-date label {
   margin-bottom: 9px;
 }
 
+.credit-card-informations .credit-card-expiration-date .expiration-date .expiration-date-month-year {
+  display: flex;
+}
 .credit-card-informations .credit-card-expiration-date .expiration-date input {
   margin-right: 8px;
   padding: 11px 16px;
@@ -93,8 +98,19 @@ body {
 }
 
 .credit-card-informations .credit-card-expiration-date .expiration-date-and-cvc .credit-card-cvc input {
-  width: 164px;
+  width: 150px;
   padding: 11px 16px;
   border-radius: 8px;
   border: 1px solid #DFDEE0;
+}
+
+.credit-card-informations button {
+  font-size: 18px;
+  font-weight: 500;
+
+  background-color: #21092F;
+  color: white;
+  padding: 15px 129px;
+  border-radius: 8px;
+  border: 1px solid #21092F;
 }
