@@ -31,7 +31,7 @@ body {
   display: none;
 }
 
-.page-wrapper .credit-card-visual .credit-card-back {
+.page-wrapper .credit-card-visual .mobile-credit-card-back {
   position: absolute;
   z-index: 1;
 
@@ -39,12 +39,20 @@ body {
   left: 73px;
 }
 
-.page-wrapper .credit-card-visual .credit-card-front {
+.page-wrapper .credit-card-visual .desktop-credit-card-back {
+  display: none;
+}
+
+.page-wrapper .credit-card-visual .mobile-credit-card-front {
   position: absolute;
   z-index: 2;
 
   margin-top: 126px;
   margin-left: 16px;
+}
+
+.page-wrapper .credit-card-visual .desktop-credit-card-front {
+  display: none;
 }
 
 .page-wrapper .credit-card-informations {
@@ -150,7 +158,7 @@ body {
     height: 100vh;
     max-width: none;
     margin: 0;
-    overflow: hidden;
+    overflow: visible;
   }
 
   .page-wrapper .credit-card-visual .mobile-background {
@@ -158,7 +166,34 @@ body {
   }
 
   .page-wrapper .credit-card-visual .desktop-background {
-    display: flex;
+    display: block;
     justify-content: flex-start;
+  }
+
+  .page-wrapper .credit-card-visual .mobile-credit-card-front {
+    display: none;
+  }
+
+  .page-wrapper .credit-card-visual .desktop-credit-card-front {
+    display: block;
+
+    position: absolute;
+    z-index: 2;
+
+    top: 187px;
+    left: 164px;
+  }
+
+  .page-wrapper .credit-card-visual .mobile-credit-card-back {
+    display: none;
+  }
+
+  .page-wrapper .credit-card-visual .desktop-credit-card-back {
+    display: block;
+    position: absolute;
+    z-index: 1;
+
+    top: 469px;
+    left: 258px;
   }
 }

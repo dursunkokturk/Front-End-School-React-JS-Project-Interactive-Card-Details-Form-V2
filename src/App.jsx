@@ -1,5 +1,7 @@
 import MobileCreditCardBack from './assets/img/mobile-credit-card-back.png'
+import DesktopCreditCardBack from './assets/img/desktop-credit-card-back.png'
 import MobileCreditCardFront from './assets/img/mobile-credit-card-front.png'
+import DesktopCreditCardFront from './assets/img/desktop-credit-card-front.png'
 import MobileBackground from './assets/img/mobile-background.png'
 import DesktopBackground from './assets/img/desktop-background.png'
 import './App.css'
@@ -10,8 +12,10 @@ export default function App() {
     <>
       <div className="page-wrapper">
         <div className="credit-card-visual">
-          <img src={MobileCreditCardBack} className='credit-card-back' alt="" />
-          <img src={MobileCreditCardFront} className='credit-card-front' alt="" />
+          <img src={MobileCreditCardBack} className='mobile-credit-card-back' alt="" />
+          <img src={DesktopCreditCardBack} className='desktop-credit-card-back' alt="" />
+          <img src={MobileCreditCardFront} className='mobile-credit-card-front' alt="" />
+          <img src={DesktopCreditCardFront} className='desktop-credit-card-front' alt="" />
           <img src={MobileBackground} className='mobile-background' alt="" />
           <img src={DesktopBackground} className='desktop-background' alt="" />
         </div>
