@@ -6,8 +6,11 @@ import MobileBackground from './assets/img/mobile-background.png'
 import DesktopBackground from './assets/img/desktop-background.png'
 import './App.css'
 import ThankYou from './Components/ThankYou'
+import { useState } from 'react'
 
 export default function App() {
+
+  const [cardHolderName,setCardHolderName]=useState("");
 
   return (
     <>
@@ -23,7 +26,14 @@ export default function App() {
         <div className="credit-card-informations">
           <div className="credit-card-name">
             <label>KART SAHİBİNİN ADI</label>
-            <input type="text" />
+            <input 
+              type="text" 
+              value={cardHolderName}
+              onChange={(e)=>{
+                const value = e.target.value;
+                setCardHolderName(value)
+              }}
+              />
           </div>
           <div className="credit-card-number">
             <label>KART NUMARASI</label>
