@@ -4,10 +4,12 @@
   box-sizing: border-box;
 }
 
-html,body{
+html,
+body {
   height: 100%;
   overflow: hidden;
 }
+
 body {
   font-family: Space Grotesk;
 }
@@ -169,6 +171,32 @@ body {
   margin-bottom: 45px;
 }
 
+.thankyou .thankyou-click-and-thankyou-oval {
+  display: flex;
+  position: relative;
+
+  justify-content: center;
+  align-items: center;
+}
+
+.thankyou .thankyou-click-and-thankyou-oval .thankyou-click {
+  display: flex;
+  position: absolute;
+
+  top: 30px;
+  left: 92px;
+  width: 24px;
+}
+
+.thankyou .thankyou-click-and-thankyou-oval .thankyou-oval {
+  width: 80px;
+  height: 80px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 @media(width>1109px) {
   .page-wrapper {
     display: flex;
@@ -241,9 +269,10 @@ body {
     width: 370px;
   }
 
-  .page-wrapper .credit-card-informations .credit-card-number input{
+  .page-wrapper .credit-card-informations .credit-card-number input {
     width: 370px;
   }
+
   .page-wrapper .credit-card-informations .credit-card-expiration-date .expiration-date-and-cvc .expiration-date input {
     /* margin-right: 8px;
     padding: 11px 16px;

@@ -5,6 +5,7 @@ import DesktopCreditCardFront from './assets/img/desktop-credit-card-front.png'
 import MobileBackground from './assets/img/mobile-background.png'
 import DesktopBackground from './assets/img/desktop-background.png'
 import './App.css'
+import ThankYou from './Components/ThankYou'
 
 export default function App() {
 
@@ -44,6 +45,7 @@ export default function App() {
             </div>
           </div>
           <button>Onayla</button>
+          <ThankYou />
         </div>
       </div>
     </>
