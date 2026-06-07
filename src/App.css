@@ -197,6 +197,67 @@ body {
   align-items: center;
 }
 
+.page-wrapper .credit-card-visual .mobile-card-number-span-and-img {
+  display: flex;
+  position: relative;
+}
+
+.page-wrapper .credit-card-visual .mobile-card-number {
+  font-family: Space Grotesk;
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: 2.2px;
+  line-height: 100%;
+  color: white;
+  background-color: rgb(99, 45, 170);
+  /* background: linear-gradient(90 deg rgb(128, 0, 255), rgb(160, 64, 255), rgb(192, 128, 255), rgb(224, 192, 255), rgb(255, 255, 255)); */
+  display: flex;
+  position: absolute;
+
+  top: 215px;
+  left: 36px;
+  font-size: 18px;
+  width: 240px;
+  z-index: 3;
+}
+
+.page-wrapper .credit-card-visual .card-holder-name-span-and-img {
+  display: flex;
+  position: relative;
+}
+
+.page-wrapper .credit-card-visual .mobile-card-cvc {
+  color: white;
+  background-color: rgb(99, 45, 170);
+  /* background: linear-gradient(90 deg rgb(128, 0, 255), rgb(160, 64, 255), rgb(192, 128, 255), rgb(224, 192, 255), rgb(255, 255, 255)); */
+  display: flex;
+  position: absolute;
+
+  top: 249px;
+  left: 36px;
+  font-size: 12px;
+  width: 200px;
+  z-index: 3;
+}
+
+
+
+
+
+.page-wrapper .credit-card-visual .mobile-card-holder-name {
+  color: white;
+  background-color: rgb(99, 45, 170);
+  /* background: linear-gradient(90 deg rgb(128, 0, 255), rgb(160, 64, 255), rgb(192, 128, 255), rgb(224, 192, 255), rgb(255, 255, 255)); */
+  display: flex;
+  position: absolute;
+
+  top: 249px;
+  left: 36px;
+  font-size: 12px;
+  width: 200px;
+  z-index: 3;
+}
+
 @media(width>1109px) {
   .page-wrapper {
     display: flex;

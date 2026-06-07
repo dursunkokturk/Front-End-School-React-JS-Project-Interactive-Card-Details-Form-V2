@@ -20,9 +20,15 @@ export default function App() {
     <>
       <div className="page-wrapper">
         <div className="credit-card-visual">
-          <img src={MobileCreditCardBack} className='mobile-credit-card-back' alt="" />
+          <div className="card-number-span-and-img">
+            <span className='mobile-card-number'>{cardNumber}</span>
+            <img src={MobileCreditCardBack} className='mobile-credit-card-back' alt="" />
+          </div>
           <img src={DesktopCreditCardBack} className='desktop-credit-card-back' alt="" />
-          <img src={MobileCreditCardFront} className='mobile-credit-card-front' alt="" />
+          <div className="card-holder-name-span-and-img">
+            <span className='mobile-card-holder-name'>{cardHolderName}</span>
+            <img src={MobileCreditCardFront} className='mobile-credit-card-front' alt="" />
+          </div>
           <img src={DesktopCreditCardFront} className='desktop-credit-card-front' alt="" />
           <img src={MobileBackground} className='mobile-background' alt="" />
           <img src={DesktopBackground} className='desktop-background' alt="" />
