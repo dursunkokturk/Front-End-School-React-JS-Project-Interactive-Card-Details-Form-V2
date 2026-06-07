@@ -11,6 +11,7 @@ import { useState } from 'react'
 export default function App() {
 
   const [cardHolderName,setCardHolderName]=useState("");
+  const [cardNumber,setCardNumber]=useState("");
 
   return (
     <>
@@ -37,7 +38,14 @@ export default function App() {
           </div>
           <div className="credit-card-number">
             <label>KART NUMARASI</label>
-            <input type="number" />
+            <input 
+              type="number"
+              value={setCardNumber}
+              onChange={(e)=>{
+                const value = e.target.value;
+                setCardNumber(value)
+              }} 
+            />
           </div>
           <div className="credit-card-expiration-date">
             <div className="expiration-date-and-cvc">
