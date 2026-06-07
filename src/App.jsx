@@ -10,8 +10,11 @@ import { useState } from 'react'
 
 export default function App() {
 
-  const [cardHolderName,setCardHolderName]=useState("");
-  const [cardNumber,setCardNumber]=useState("");
+  const [cardHolderName, setCardHolderName] = useState("");
+  const [cardNumber, setCardNumber] = useState("");
+  const [expirationDateMonth, setExpirationDateMonth] = useState("");
+  const [expirationDateYear, setExpirationDateYear] = useState("");
+  const [cardCvcNumber, setCardCvcNumber] = useState("");
 
   return (
     <>
@@ -27,24 +30,24 @@ export default function App() {
         <div className="credit-card-informations">
           <div className="credit-card-name">
             <label>KART SAHİBİNİN ADI</label>
-            <input 
-              type="text" 
+            <input
+              type="text"
               value={cardHolderName}
-              onChange={(e)=>{
+              onChange={(e) => {
                 const value = e.target.value;
                 setCardHolderName(value)
               }}
-              />
+            />
           </div>
           <div className="credit-card-number">
             <label>KART NUMARASI</label>
-            <input 
+            <input
               type="number"
-              value={setCardNumber}
-              onChange={(e)=>{
+              value={cardNumber}
+              onChange={(e) => {
                 const value = e.target.value;
                 setCardNumber(value)
-              }} 
+              }}
             />
           </div>
           <div className="credit-card-expiration-date">
@@ -52,13 +55,34 @@ export default function App() {
               <div className="expiration-date">
                 <label>SKT (AY/YIL)</label>
                 <div className="expiration-date-month-year">
-                  <input type="number" />
-                  <input type="number" />
+                  <input
+                    type="number"
+                    value={expirationDateMonth}
+                    onChange={(e) => {
+                      const value = e.target.value;
+                      setExpirationDateMonth(value)
+                    }}
+                  />
+                  <input
+                    type="number"
+                    value={expirationDateYear}
+                    onChange={(e) => {
+                      const value = e.target.value;
+                      setExpirationDateYear(value)
+                    }}
+                  />
                 </div>
               </div>
               <div className="credit-card-cvc">
                 <label>CVC</label>
-                <input type="number" />
+                <input
+                  type="number"
+                  value={cardCvcNumber}
+                  onChange={(e) => {
+                    const value = e.target.value;
+                    setCardCvcNumber(value)
+                  }}
+                />
               </div>
             </div>
           </div>
