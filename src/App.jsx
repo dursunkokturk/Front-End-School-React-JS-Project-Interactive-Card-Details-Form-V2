@@ -27,6 +27,7 @@ export default function App() {
           <img src={DesktopCreditCardBack} className='desktop-credit-card-back' alt="" />
           <div className="card-holder-name-span-and-img">
             <span className='mobile-card-holder-name'>{cardHolderName}</span>
+            <span className='mobile-card-expiration-date'>{expirationDateMonth}/{expirationDateYear}</span>
             <img src={MobileCreditCardFront} className='mobile-credit-card-front' alt="" />
           </div>
           <img src={DesktopCreditCardFront} className='desktop-credit-card-front' alt="" />
