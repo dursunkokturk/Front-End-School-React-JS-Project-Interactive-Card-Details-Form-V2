@@ -15,6 +15,7 @@ export default function App() {
   const [expirationDateMonth, setExpirationDateMonth] = useState("");
   const [expirationDateYear, setExpirationDateYear] = useState("");
   const [cardCvcNumber, setCardCvcNumber] = useState("");
+  const [focusedInput, setFocusedInput] = useState("");
 
   return (
     <>
@@ -66,6 +67,9 @@ export default function App() {
                   <input
                     type="number"
                     value={expirationDateMonth}
+                    className={focusedInput === 'month' ? 'focused' : ''}
+                    onFocus={() => setFocusedInput('month')}
+                    onBlur={()=>setFocusedInput('')}
                     onChange={(e) => {
                       const value = e.target.value;
                       setExpirationDateMonth(value)
@@ -74,6 +78,9 @@ export default function App() {
                   <input
                     type="number"
                     value={expirationDateYear}
+                    className={focusedInput === 'year' ? 'focused' : ''}
+                    onFocus={() => setFocusedInput('year')}
+                    onBlur={()=>setFocusedInput('')}
                     onChange={(e) => {
                       const value = e.target.value;
                       setExpirationDateYear(value)

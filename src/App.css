@@ -88,6 +88,10 @@ body {
   border: 1px solid #DFDEE0;
 }
 
+.page-wrapper .credit-card-informations .credit-card-name input:focus {
+  outline: 1px solid purple;
+}
+
 .page-wrapper .credit-card-informations .credit-card-number {
   display: flex;
   flex-direction: column;
@@ -106,6 +110,10 @@ body {
   padding: 11px 16px;
   border-radius: 8px;
   border: 1px solid #DFDEE0;
+}
+
+.page-wrapper .credit-card-informations .credit-card-number input:focus {
+  outline: 1px solid purple;
 }
 
 .page-wrapper .credit-card-informations .credit-card-expiration-date .expiration-date-and-cvc {
@@ -136,6 +144,10 @@ body {
   display: flex;
 }
 
+.page-wrapper .credit-card-informations .credit-card-expiration-date .expiration-date .expiration-date-month-year input:focus {
+  outline: 1px solid purple;
+}
+
 .page-wrapper .credit-card-informations .credit-card-expiration-date .expiration-date input {
   margin-right: 8px;
   padding: 11px 16px;
@@ -157,6 +169,10 @@ body {
   padding: 11px 16px;
   border-radius: 8px;
   border: 1px solid #DFDEE0;
+}
+
+.page-wrapper .credit-card-informations .credit-card-expiration-date .expiration-date-and-cvc .credit-card-cvc input:focus {
+  outline: 1px solid purple;
 }
 
 .page-wrapper .credit-card-informations button {
@@ -202,7 +218,7 @@ body {
   position: relative;
 }
 
-.page-wrapper .credit-card-visual .card-number-span-and-img .mobile-cvc-number{
+.page-wrapper .credit-card-visual .card-number-span-and-img .mobile-cvc-number {
   color: white;
   background-color: rgb(177, 177, 177);
   padding: 2px;
@@ -281,7 +297,7 @@ body {
   position: absolute;
 
   top: 250px;
-  left:250px;
+  left: 250px;
   font-size: 9px;
   width: 32px;
   z-index: 3;
