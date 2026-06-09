@@ -21,11 +21,12 @@ export default function App() {
       <div className="page-wrapper">
         <div className="credit-card-visual">
           <div className="card-number-span-and-img">
-            <span className='mobile-card-number'>{cardNumber}</span>
+            <span className='mobile-cvc-number'>{cardCvcNumber}</span>
             <img src={MobileCreditCardBack} className='mobile-credit-card-back' alt="" />
           </div>
           <img src={DesktopCreditCardBack} className='desktop-credit-card-back' alt="" />
           <div className="card-holder-name-span-and-img">
+            <span className='mobile-card-number'>{cardNumber}</span>
             <span className='mobile-card-holder-name'>{cardHolderName}</span>
             <span className='mobile-card-expiration-date'>{expirationDateMonth}/{expirationDateYear}</span>
             <img src={MobileCreditCardFront} className='mobile-credit-card-front' alt="" />
