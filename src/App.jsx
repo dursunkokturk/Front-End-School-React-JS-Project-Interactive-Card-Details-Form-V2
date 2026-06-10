@@ -98,7 +98,7 @@ export default function App() {
                     }}
                   />
                   <input
-                    type="number"
+                    type="text"
                     maxLength={2}
                     value={expirationDateYear}
                     className={focusedInput === 'year' ? 'focused' : ''}
@@ -114,7 +114,7 @@ export default function App() {
               <div className="credit-card-cvc">
                 <label>CVC</label>
                 <input
-                  type="number"
+                  type="text"
                   maxLength={3}
                   value={cardCvcNumber}
                   className={focusedInput === 'cvc' ? 'focused' : ''}
