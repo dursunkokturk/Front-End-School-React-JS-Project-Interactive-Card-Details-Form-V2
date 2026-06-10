@@ -216,7 +216,7 @@ input:active {
 .page-wrapper .credit-card-informations .credit-card-expiration-date-and-cvc {
   display: flex;
   gap: 11px;
-  align-items: flex-end;
+  align-items: flex-start;
 }
 
 .page-wrapper .credit-card-informations .credit-card-expiration-date-and-cvc .expiration-date {
@@ -283,6 +283,32 @@ input:active {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+/* ============= HATA STİLLERİ ============= */
+input.input-error {
+  border: 1px solid #FF5050 !important;
+  outline: none;
+}
+
+input.input-error:focus,
+input.input-error.focused {
+  border: 1px solid #FF5050 !important;
+  box-shadow: 0 0 0 2px rgba(255, 80, 80, 0.15);
+}
+
+.error-message {
+  display: block;
+  font-size: 11px;
+  font-weight: 400;
+  color: #FF5050;
+  margin-top: 6px;
+  letter-spacing: 0.3px;
+}
+
+.input-with-error {
+  display: flex;
+  flex-direction: column;
 }
 
 @media(width>1109px) {
