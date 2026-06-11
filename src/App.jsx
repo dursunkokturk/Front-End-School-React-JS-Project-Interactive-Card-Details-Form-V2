@@ -30,6 +30,18 @@ export default function App() {
     return cleaned.replace(/(.{4})/g, '$1 ').trim()
   }
 
+  // Sadece Rakam Tuslari ve 
+  // Backspace, Delete, Tab, Arrow Gibi Kontrol Tuslari Serbest
+  const allowOnlyNumbers = (e) => {
+    const allowedKeys = ['Backspace', 'Delete', 'Tab', 'ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown']
+    const isNumber = /^[0-9]$/.test(e.key)
+    const isCtrl = e.ctrlKey || e.metaKey  // Ctrl+C, Ctrl+V gibi
+
+    if (!isNumber && !allowedKeys.includes(e.key) && !isCtrl) {
+      e.preventDefault()
+    }
+  }
+  
   const validate = () => {
     const newErrors = {
       cardHolderName: "",
@@ -55,8 +67,8 @@ export default function App() {
     if (!expirationDateMonth.trim()) {
       newErrors.expirationDateMonth = "Ay Alanı Boş Bırakılamaz";
       isValid = false;
-    } else if (Number(expirationDateMonth) < 1 || Number(expirationDateMonth) < 12) {
-      newErrors.expirationDateMonth = "Geçersiz Ay";
+    } else if (Number(expirationDateMonth) < 1 || Number(expirationDateMonth) > 12) {
+      newErrors.expirationDateMonth = "Geçersiz Ay (1-12)";
       isValid = false;
     }
     if (!expirationDateYear.trim()) {
@@ -139,6 +151,10 @@ export default function App() {
             <label>KART NUMARASI</label>
             <input
               type="text"
+
+              // Mobilde Sayisal Klavye
+              inputMode='numeric'
+
               value={formatCardNumber(cardNumber)}
               className={[
                 focusedInput === 'number' ? 'focused' : '',
@@ -146,6 +162,10 @@ export default function App() {
               ].join(' ')}
               onFocus={() => setFocusedInput('number')}
               onBlur={() => setFocusedInput('')}
+
+              // Harf Tusunu Engelliyoruz
+              onKeyDown={allowOnlyNumbers}
+              
               onChange={(e) => {
                 const value = e.target.value.replace(/\D/g, '').slice(0, 16);
                 setCardNumber(value)
