@@ -6,7 +6,7 @@ import MobileBackground from './assets/img/mobile-background.png'
 import DesktopBackground from './assets/img/desktop-background.png'
 import './App.css'
 import ThankYou from './Components/ThankYou'
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 
 export default function App() {
 
@@ -89,10 +89,10 @@ export default function App() {
     } else if (expirationDateYear.length < 2) {
       newErrors.expirationDateYear = "Yıl 2 Haneli Olmalıdır";
       isValid = false;
-    } else if (enteredYear < currentMonth) {
+    } else if (enteredYear < currentYear) {
       newErrors.expirationDateYear = "Kart Kullanım Süresi Dolmuş";
       isValid = false;
-    } else if (enteredYear === currentMonth && enteredMonth < currentMonth) {
+    } else if (enteredYear === currentYear && enteredMonth < currentMonth) {
       // Ayni Yil Icinde Ay Gecmis Ise
       newErrors.expirationDateYear = "Kart Kullanım Süresi Dolmuş";
       isValid = false;
@@ -219,6 +219,11 @@ export default function App() {
                         const value = e.target.value.replace(/\D/g, '').slice(0, 2);
                         setExpirationDateMonth(value)
                         clearError('expirationDateMonth')
+
+                        // 2 Hane Dolunca Yil input'una Otomatik Gec
+                        if (value.length === 2) {
+                          yearInputRef.current?.focus()
+                        }
                       }}
                     />
                     {errors.expirationDateMonth && (
@@ -227,6 +232,7 @@ export default function App() {
                   </div>
                   <div className="input-with-error">
                     <input
+                      ref={yearInputRef}
                       type="text"
                       maxLength={2}
                       value={expirationDateYear}
