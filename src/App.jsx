@@ -24,6 +24,9 @@ export default function App() {
     cardCvcNumber: ""
   })
 
+  // Ay Dolunca Otomatik Yil input'una Gec
+  const yearInputRef = useRef(null)
+
   // Kart Numarasini 4'lU Gruplara Boluyoruz: 1234567812345678 → 1234 5678 1234 5678
   const formatCardNumber = (value) => {
     const cleaned = value.replace(/\D/g, '').slice(0, 16)
@@ -41,7 +44,7 @@ export default function App() {
       e.preventDefault()
     }
   }
-  
+
   const validate = () => {
     const newErrors = {
       cardHolderName: "",
@@ -57,6 +60,7 @@ export default function App() {
       newErrors.cardHolderName = "İsim Alanı Boş Bırakılamaz";
       isValid = false;
     }
+
     if (!cardNumber.trim()) {
       newErrors.cardNumber = "Kredi Kartı Numarası Alanı Boş Bırakılamaz";
       isValid = false;
@@ -64,6 +68,7 @@ export default function App() {
       newErrors.cardNumber = "Kartı Numarası 16 Haneli Olmalıdır";
       isValid = false;
     }
+
     if (!expirationDateMonth.trim()) {
       newErrors.expirationDateMonth = "Ay Alanı Boş Bırakılamaz";
       isValid = false;
@@ -71,10 +76,28 @@ export default function App() {
       newErrors.expirationDateMonth = "Geçersiz Ay (1-12)";
       isValid = false;
     }
+
+    // Yil Kontrolu
+    const currentYear = new Date().getFullYear() % 100  // 2025 → 25
+    const currentMonth = new Date().getMonth() + 1       // 0-11 → 1-12
+    const enteredYear = Number(expirationDateYear)
+    const enteredMonth = Number(expirationDateMonth)
+
     if (!expirationDateYear.trim()) {
       newErrors.expirationDateYear = "Yıl Alanı Boş Bırakılamaz";
       isValid = false;
+    } else if (expirationDateYear.length < 2) {
+      newErrors.expirationDateYear = "Yıl 2 Haneli Olmalıdır";
+      isValid = false;
+    } else if (enteredYear < currentMonth) {
+      newErrors.expirationDateYear = "Kart Kullanım Süresi Dolmuş";
+      isValid = false;
+    } else if (enteredYear === currentMonth && enteredMonth < currentMonth) {
+      // Ayni Yil Icinde Ay Gecmis Ise
+      newErrors.expirationDateYear = "Kart Kullanım Süresi Dolmuş";
+      isValid = false;
     }
+
     if (!cardCvcNumber.trim()) {
       newErrors.cardCvcNumber = "CVC Alanı Boş Bırakılamaz";
       isValid = false;
@@ -165,7 +188,7 @@ export default function App() {
 
               // Harf Tusunu Engelliyoruz
               onKeyDown={allowOnlyNumbers}
-              
+
               onChange={(e) => {
                 const value = e.target.value.replace(/\D/g, '').slice(0, 16);
                 setCardNumber(value)
