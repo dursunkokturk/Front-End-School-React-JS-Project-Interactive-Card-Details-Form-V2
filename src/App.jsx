@@ -187,7 +187,9 @@ export default function App() {
               {cardHolderName || ''}
             </span>
             <span className="card-expiration-data-display">
-              {expirationDateMonth || ''}/{expirationDateYear || ''}
+              {expirationDateMonth}
+              {(expirationDateMonth || expirationDateYear) && '/'}
+              {expirationDateYear}
             </span>
             <img src={MobileCreditCardFront} className='mobile-credit-card-front' alt="" />
             <img src={DesktopCreditCardFront} className='desktop-credit-card-front' alt="" />
