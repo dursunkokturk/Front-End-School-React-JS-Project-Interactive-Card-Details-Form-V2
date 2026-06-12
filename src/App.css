@@ -32,7 +32,7 @@ body {
 /* ======================== CREDIT CARD BACK-END ======================== */
 .page-wrapper .credit-card-visual .card-back-wrapper {
   display: flex;
-  position: relative;
+  position: static;
 }
 
 .page-wrapper .credit-card-visual .card-back-wrapper .cvc-number {
@@ -56,7 +56,7 @@ body {
 /* ======================== CREDIT CARD FRONT-END ======================== */
 .page-wrapper .credit-card-visual .card-front-wrapper {
   display: flex;
-  position: relative;
+  position: static;
 }
 
 .page-wrapper .credit-card-visual .mobile-background {
@@ -386,7 +386,7 @@ input.input-error.focused {
     z-index: 2;
 
     top: 15%;
-    left: 5%;
+    left: 15%;
   }
 
   .page-wrapper .credit-card-visual .mobile-credit-card-back {
@@ -412,6 +412,52 @@ input.input-error.focused {
 
     /* height: 100vh; */
     overflow: hidden;
+  }
+
+  .page-wrapper .credit-card-visual .card-front-wrapper .card-holder-name-display {
+    font-size: 14px;
+    /* Mobile Location */
+    top: 296px;
+    left: 104px;
+    width: 200px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .page-wrapper .credit-card-visual .card-front-wrapper .card-number-display {
+    font-size: 28px;
+    top: 235px;
+    left: 104px;
+    width: 371px;
+
+    letter-spacing: 3.42px;
+  }
+
+  .page-wrapper .credit-card-visual .card-front-wrapper .card-expiration-data-display {
+    font-size: 14px;
+    letter-spacing: 2px;
+    padding-inline: 5px;
+
+    /* Mobile Location */
+    top: 296px;
+    left: 437px;
+    width: 55px;
+  }
+
+  .page-wrapper .credit-card-visual .card-back-wrapper .cvc-number {
+    font-size: 14px;
+    padding: 2px;
+    letter-spacing: 1px;
+
+    display: flex;
+    position: absolute;
+
+    /* Mobile Location */
+    top: 469px;
+    left: 480px;
+    /* width: 21px; */
+    z-index: 2;
   }
 
   .page-wrapper .credit-card-informations .credit-card-name input {
