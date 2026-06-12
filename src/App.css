@@ -461,7 +461,9 @@ input.input-error.focused {
   }
 
   .page-wrapper .credit-card-informations .credit-card-name input {
-    width: 370px;
+    font-size: 18px;
+    width: 370px;    
+    padding: 11px 16px;
   }
 
   .page-wrapper .credit-card-informations .credit-card-name input:hover {
@@ -475,10 +477,12 @@ input.input-error.focused {
   }
 
   .page-wrapper .credit-card-informations .credit-card-number input {
+    font-size: 18px;
     width: 370px;
   }
 
   .page-wrapper .credit-card-informations .credit-card-expiration-date input {
+    font-size: 18px;
     width: 72px;
   }
 
@@ -487,6 +491,19 @@ input.input-error.focused {
     padding: 11px 16px;
     border-radius: 8px;
     border: 1px solid #DFDEE0;
+  }
+
+  .page-wrapper .credit-card-informations .credit-card-expiration-date label {
+    font-size: 12px;
+  }
+
+  .page-wrapper .credit-card-informations .credit-card-expiration-date .expiration-date input {
+    padding: 11px 16px;
+    width: 80px;
+  }
+
+  .page-wrapper .credit-card-informations .credit-card-expiration-date-and-cvc .credit-card-cvc input {
+    width: 185px;
   }
 
   .page-wrapper .credit-card-informations button {
