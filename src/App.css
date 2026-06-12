@@ -39,7 +39,7 @@ body {
   font-size: 9px;
   font-weight: 500;
   color: white;
-  /* background-color: rgb(177, 177, 177); */
+  background-color: gray;
   padding: 2px;
   letter-spacing: 1px;
 
@@ -73,12 +73,14 @@ body {
   position: absolute;
   z-index: 3;
   color: white;
+  background-color: purple;
   font-size: 9px;
   font-weight: 500;
   letter-spacing: 1px;
+  padding-inline: 5px;
 
   /* Mobile Location */
-  top: 249px;
+  top: 251px;
   left: 36px;
   width: 200px;
   white-space: nowrap;
@@ -91,12 +93,14 @@ body {
   position: absolute;
   z-index: 3;
   color: white;
+  background-color: purple;
   font-size: 9px;
   font-weight: 500;
   letter-spacing: 1px;
+  padding-inline: 5px;
 
   /* Mobile Location */
-  top: 249px;
+  top: 251px;
   left: 250px;
   width: 40px;
 }
@@ -142,12 +146,14 @@ input:active {
   position: absolute;
   z-index: 3;
   color: white;
+  background-color: purple;
   font-size: 18px;
   font-weight: 500;
   letter-spacing: 2.2px;
-  top: 215px;
+  top: 211px;
   left: 36px;
   width: 240px;
+  padding-inline: 5px;
 }
 
 /* ============== CREDIT CARD AREA ============== */
@@ -247,7 +253,7 @@ input:active {
   width: 72px;
 }
 
-.page-wrapper .credit-card-informations button {
+.page-wrapper .credit-card-informations .confirm-button {
   font-size: 18px;
   font-weight: 500;
 
@@ -302,7 +308,12 @@ input:active {
 }
 
 .thankyou .thankyou-form-continue-button {
+  font-size: 18px;
+  font-weight: 500;
+  color: white;
+  background-color: #21092F;
   padding: 15px 120px;
+  border-radius: 8px;
 }
 
 
