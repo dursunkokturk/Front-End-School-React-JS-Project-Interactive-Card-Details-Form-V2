@@ -46,6 +46,25 @@ export default function App() {
     }
   }
 
+  const allowOnlyLetters = (e) => {
+
+    const allowedKeys = [
+      'Backspace',
+      'Delete',
+      'Tab',
+      'ArrowLeft',
+      'ArrowRight',
+      'ArrowUp',
+      'ArrowDown'
+    ]
+
+    const isLetter = /^[A-Za-zÇçĞğİıÖöŞşÜü\s]$/.test(e.key)
+
+    if (!isLetter && !allowedKeys.includes(e.key)) {
+      e.preventDefault()
+    }
+  }
+
   const validate = () => {
     const newErrors = {
       cardHolderName: "",
@@ -57,8 +76,11 @@ export default function App() {
 
     let isValid = true;
 
-    if (!cardHolderName.trim()) {
+    if (!cardHolderName.trim().replace(/\s+/g, " ")) {
       newErrors.cardHolderName = "İsim Alanı Boş Bırakılamaz";
+      isValid = false;
+    } else if (!/^[A-Za-zÇçĞğİıÖöŞşÜü\s]+$/.test(cardHolderName)) {
+      newErrors.cardHolderName = "İsim sadece harflerden oluşmalıdır";
       isValid = false;
     }
 
@@ -113,7 +135,13 @@ export default function App() {
 
   const handleSubmit = () => {
     if (validate()) {
-      console.log("Form Geçerli Devam Ediliyor");
+      console.log(
+        cardHolderName,
+        cardNumber,
+        expirationDateMonth,
+        expirationDateYear,
+        cardCvcNumber
+      );
       setShowThankYou(true);
     }
   }
@@ -122,16 +150,16 @@ export default function App() {
     setShowThankYou(""),
     setCardHolderName(""),
     setCardNumber(""),
-    expirationDateMonth(""),
-    expirationDateYear(""),
-    setCardCvcNumber(),
+    setExpirationDateMonth(""),
+    setExpirationDateYear(""),
+    setCardCvcNumber(""),
 
     setErrors({
       cardHolderName: "",
       cardNumber: "",
       expirationDateMonth: "",
       expirationDateYear: "",
-      cardCvcNumber
+      cardCvcNumber:""
     })
     setShowThankYou(false)
   }
@@ -180,6 +208,7 @@ export default function App() {
                 <label>KART SAHİBİNİN ADI</label>
                 <input
                   type="text"
+                  onKeyDown={allowOnlyLetters}
                   value={cardHolderName}
                   className={[
                     focusedInput === 'name' ? 'focused' : '',
@@ -307,7 +336,10 @@ export default function App() {
                   </div>
                 </div>
               </div>
-              <button onClick={handleSubmit}>Onayla</button>
+              <button 
+                onClick={handleSubmit}
+                className='confirm-button'
+              >Onayla</button>
             </>
           )
           }
