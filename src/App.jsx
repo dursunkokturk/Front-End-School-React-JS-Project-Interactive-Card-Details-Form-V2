@@ -16,6 +16,7 @@ export default function App() {
   const [expirationDateYear, setExpirationDateYear] = useState("");
   const [cardCvcNumber, setCardCvcNumber] = useState("");
   const [focusedInput, setFocusedInput] = useState("");
+  const [showThankYou, setShowThankYou] = useState(false);
   const [errors, setErrors] = useState({
     cardHolderName: "",
     cardNumber: "",
@@ -113,9 +114,28 @@ export default function App() {
   const handleSubmit = () => {
     if (validate()) {
       console.log("Form Geçerli Devam Ediliyor");
+      setShowThankYou(true);
     }
   }
 
+  const resetForm = () => {
+    setShowThankYou(""),
+    setCardHolderName(""),
+    setCardNumber(""),
+    expirationDateMonth(""),
+    expirationDateYear(""),
+    setCardCvcNumber(),
+
+    setErrors({
+      cardHolderName: "",
+      cardNumber: "",
+      expirationDateMonth: "",
+      expirationDateYear: "",
+      cardCvcNumber
+    })
+    setShowThankYou(false)
+  }
+  
   const clearError = (field) => {
     setErrors(prev => ({ ...prev, [field]: "" }))
   }
@@ -149,140 +169,150 @@ export default function App() {
         </div>
 
         <div className="credit-card-informations">
-          <div className="credit-card-name">
-            <label>KART SAHİBİNİN ADI</label>
-            <input
-              type="text"
-              value={cardHolderName}
-              className={[
-                focusedInput === 'name' ? 'focused' : '',
-                errors.cardHolderName ? 'input-error' : ''
-              ].join(' ')}
-              onFocus={() => setFocusedInput('name')}
-              onBlur={() => setFocusedInput('')}
-              onChange={(e) => {
-                const value = e.target.value;
-                setCardHolderName(value)
-                clearError('cardHolderName')
-              }}
-            />
-            {errors.cardHolderName && (
-              <span className="error-message">{errors.cardHolderName}</span>
-            )}
-          </div>
-          <div className="credit-card-number">
-            <label>KART NUMARASI</label>
-            <input
-              type="text"
+          {showThankYou ? (
 
-              // Mobilde Sayisal Klavye
-              inputMode='numeric'
+            // Kullanici Tarafindan Girilen Data'lari
+            // ThankYou Component Uzerinden Kaydediyoruz  
+            <ThankYou resetForm={resetForm} />
+          ) : (
+            <>
+              <div className="credit-card-name">
+                <label>KART SAHİBİNİN ADI</label>
+                <input
+                  type="text"
+                  value={cardHolderName}
+                  className={[
+                    focusedInput === 'name' ? 'focused' : '',
+                    errors.cardHolderName ? 'input-error' : ''
+                  ].join(' ')}
+                  onFocus={() => setFocusedInput('name')}
+                  onBlur={() => setFocusedInput('')}
+                  onChange={(e) => {
+                    const value = e.target.value;
+                    setCardHolderName(value)
+                    clearError('cardHolderName')
+                  }}
+                />
+                {errors.cardHolderName && (
+                  <span className="error-message">{errors.cardHolderName}</span>
+                )}
+              </div>
+              <div className="credit-card-number">
+                <label>KART NUMARASI</label>
+                <input
+                  type="text"
 
-              value={formatCardNumber(cardNumber)}
-              className={[
-                focusedInput === 'number' ? 'focused' : '',
-                errors.cardNumber ? 'input-error' : ''
-              ].join(' ')}
-              onFocus={() => setFocusedInput('number')}
-              onBlur={() => setFocusedInput('')}
+                  // Mobilde Sayisal Klavye
+                  inputMode='numeric'
 
-              // Harf Tusunu Engelliyoruz
-              onKeyDown={allowOnlyNumbers}
+                  value={formatCardNumber(cardNumber)}
+                  className={[
+                    focusedInput === 'number' ? 'focused' : '',
+                    errors.cardNumber ? 'input-error' : ''
+                  ].join(' ')}
+                  onFocus={() => setFocusedInput('number')}
+                  onBlur={() => setFocusedInput('')}
 
-              onChange={(e) => {
-                const value = e.target.value.replace(/\D/g, '').slice(0, 16);
-                setCardNumber(value)
-                clearError('cardNumber')
-              }}
-            />
-            {errors.cardNumber && (
-              <span className="error-message">{errors.cardNumber}</span>
-            )}
-          </div>
-          <div className="credit-card-expiration-date">
-            <div className="credit-card-expiration-date-and-cvc">
-              <div className="expiration-date">
-                <label >SKT (AY/YIL)</label>
-                <div className="expiration-date-month-year">
-                  <div className="input-with-error">
-                    <input
-                      type="text"
-                      maxLength={2}
-                      value={expirationDateMonth}
-                      className={[
-                        focusedInput === 'month' ? 'focused' : '',
-                        errors.expirationDateMonth ? 'input-error' : ''
-                      ].join(' ')}
-                      onFocus={() => setFocusedInput('month')}
-                      onBlur={() => setFocusedInput('')}
-                      onChange={(e) => {
-                        const value = e.target.value.replace(/\D/g, '').slice(0, 2);
-                        setExpirationDateMonth(value)
-                        clearError('expirationDateMonth')
+                  // Harf Tusunu Engelliyoruz
+                  onKeyDown={allowOnlyNumbers}
 
-                        // 2 Hane Dolunca Yil input'una Otomatik Gec
-                        if (value.length === 2) {
-                          yearInputRef.current?.focus()
-                        }
-                      }}
-                    />
-                    {errors.expirationDateMonth && (
-                      <span className="error-message">{errors.expirationDateMonth}</span>
-                    )}
+                  onChange={(e) => {
+                    const value = e.target.value.replace(/\D/g, '').slice(0, 16);
+                    setCardNumber(value)
+                    clearError('cardNumber')
+                  }}
+                />
+                {errors.cardNumber && (
+                  <span className="error-message">{errors.cardNumber}</span>
+                )}
+              </div>
+              <div className="credit-card-expiration-date">
+                <div className="credit-card-expiration-date-and-cvc">
+                  <div className="expiration-date">
+                    <label >SKT (AY/YIL)</label>
+                    <div className="expiration-date-month-year">
+                      <div className="input-with-error">
+                        <input
+                          type="text"
+                          maxLength={2}
+                          value={expirationDateMonth}
+                          className={[
+                            focusedInput === 'month' ? 'focused' : '',
+                            errors.expirationDateMonth ? 'input-error' : ''
+                          ].join(' ')}
+                          onFocus={() => setFocusedInput('month')}
+                          onBlur={() => setFocusedInput('')}
+                          onChange={(e) => {
+                            const value = e.target.value.replace(/\D/g, '').slice(0, 2);
+                            setExpirationDateMonth(value)
+                            clearError('expirationDateMonth')
+
+                            // 2 Hane Dolunca Yil input'una Otomatik Gec
+                            if (value.length === 2) {
+                              yearInputRef.current?.focus()
+                            }
+                          }}
+                        />
+                        {errors.expirationDateMonth && (
+                          <span className="error-message">{errors.expirationDateMonth}</span>
+                        )}
+                      </div>
+                      <div className="input-with-error">
+                        <input
+                          ref={yearInputRef}
+                          type="text"
+                          maxLength={2}
+                          value={expirationDateYear}
+                          className={[
+                            focusedInput === 'year' ? 'focused' : '',
+                            errors.expirationDateYear ? 'input-error' : ''
+                          ].join(' ')}
+                          onFocus={() => setFocusedInput('year')}
+                          onBlur={() => setFocusedInput('')}
+                          onChange={(e) => {
+                            const value = e.target.value.replace(/\D/g, '').slice(0, 2);
+                            setExpirationDateYear(value)
+                            clearError('expirationDateYear')
+                          }}
+                        />
+                        {errors.expirationDateYear && (
+                          <span className="error-message">{errors.expirationDateYear}</span>
+                        )}
+                      </div>
+                    </div>
                   </div>
-                  <div className="input-with-error">
-                    <input
-                      ref={yearInputRef}
-                      type="text"
-                      maxLength={2}
-                      value={expirationDateYear}
-                      className={[
-                        focusedInput === 'year' ? 'focused' : '',
-                        errors.expirationDateYear ? 'input-error' : ''
-                      ].join(' ')}
-                      onFocus={() => setFocusedInput('year')}
-                      onBlur={() => setFocusedInput('')}
-                      onChange={(e) => {
-                        const value = e.target.value.replace(/\D/g, '').slice(0, 2);
-                        setExpirationDateYear(value)
-                        clearError('expirationDateYear')
-                      }}
-                    />
-                    {errors.expirationDateYear && (
-                      <span className="error-message">{errors.expirationDateYear}</span>
-                    )}
+                  <div className="credit-card-cvc">
+                    <label>CVC</label>
+                    <div className="input-with-error">
+                      <input
+                        type="text"
+                        maxLength={3}
+                        value={cardCvcNumber}
+                        className={[
+                          focusedInput === 'cvc' ? 'focused' : '',
+                          errors.cardCvcNumber ? 'input-error' : ''
+                        ].join(' ')}
+                        onFocus={() => setFocusedInput('cvc')}
+                        onBlur={() => setFocusedInput('')}
+                        onChange={(e) => {
+                          const value = e.target.value.replace(/\D/g, '').slice(0, 3);
+                          setCardCvcNumber(value)
+                          clearError('cardCvcNumber')
+                        }}
+                      />
+                      {errors.cardCvcNumber && (
+                        <span className="error-message">{errors.cardCvcNumber}</span>
+                      )}
+                    </div>
                   </div>
                 </div>
               </div>
-              <div className="credit-card-cvc">
-                <label>CVC</label>
-                <div className="input-with-error">
-                  <input
-                    type="text"
-                    maxLength={3}
-                    value={cardCvcNumber}
-                    className={[
-                      focusedInput === 'cvc' ? 'focused' : '',
-                      errors.cardCvcNumber ? 'input-error' : ''
-                    ].join(' ')}
-                    onFocus={() => setFocusedInput('cvc')}
-                    onBlur={() => setFocusedInput('')}
-                    onChange={(e) => {
-                      const value = e.target.value.replace(/\D/g, '').slice(0, 3);
-                      setCardCvcNumber(value)
-                      clearError('cardCvcNumber')
-                    }}
-                  />
-                  {errors.cardCvcNumber && (
-                    <span className="error-message">{errors.cardCvcNumber}</span>
-                  )}
-                </div>
-              </div>
-            </div>
-          </div>
-          <button onClick={handleSubmit}>Onayla</button>
-        </div>
-      </div>
+              <button onClick={handleSubmit}>Onayla</button>
+            </>
+          )
+          }
+        </div >
+      </div >
     </>
   )
 }

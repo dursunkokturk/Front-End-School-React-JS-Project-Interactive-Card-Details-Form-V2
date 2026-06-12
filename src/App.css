@@ -272,7 +272,7 @@ input:active {
   position: absolute;
 
   top: 30px;
-  left: 92px;
+  left: 150px;
   width: 24px;
 }
 
@@ -283,7 +283,28 @@ input:active {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-bottom: 35px;
 }
+
+.thankyou h2 {
+  font-weight: 500;
+  letter-spacing: 3.42px;
+  color: #21092F;
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.thankyou h3 {
+  font-weight: 500;
+  color: #8F8694;
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.thankyou .thankyou-form-continue-button {
+  padding: 15px 120px;
+}
+
 
 /* ============= HATA STİLLERİ ============= */
 input.input-error {
